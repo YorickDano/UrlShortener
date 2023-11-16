@@ -1,0 +1,50 @@
+﻿@page "{updateId?}"
+@model UrlShortener.Pages.CreateUpdateModel
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger error-alert" style="font-size: 20px;font-weight:600;">
+        <strong>Fail</strong>
+        @TempData["Error"]
+    </div>
+}
+
+@if (Model.UpdateModel != null)
+{
+    <form method="post">
+        <h3>Url update</h3>
+        <div class="form-group">
+            <label asp-for="UpdateModel.LongUrl" class="control-label">Long Url</label>
+            <input asp-for="UpdateModel.LongUrl" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="UpdateModel.ShortUrl" class="control-label">Short Url</label>
+            <input asp-for="UpdateModel.ShortUrl" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="UpdateModel.CreationDate" class="control-label">Creation Date</label>
+            <input asp-for="UpdateModel.CreationDate" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="UpdateModel.TransitionsNumber" class="control-label">Transitions Number</label>
+            <input asp-for="UpdateModel.TransitionsNumber" class="form-control" />
+        </div>
+            <input asp-for="UpdateModel.Id"  hidden>
+        <br />
+        <input type="submit" asp-page-handler="Update" class="btn btn-primary" value="Update" />
+    </form>
+    <br />
+    <br />
+}
+
+
+<form method="post">
+    <h3>Url Creation</h3>
+    <div class="form-group">
+        <label class="control-label">Your url</label>
+        <input name="longUrl" type="text" class="form-control" />
+    </div>
+    <br />
+    <input type="submit" asp-page-handler="Create" class="btn btn-success" value="Create" />
+</form>
+

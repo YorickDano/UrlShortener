@@ -1,0 +1,29 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+td{
+    padding:3px 5px;
+    border:1px solid rgb(200,200,200);
+}
+table{
+    width:100%;
+}
+.error-alert{
+
+}

@@ -1,0 +1,32 @@
+﻿@page "{shortUrn?}"
+@model IndexModel
+
+<div class="text-center">
+    <h1 class="display-4">Urls</h1>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Long Url</th>
+            <th>Short Url</th>
+            <th>Creation Date</th>
+            <th>Transitions Number</th>
+        </tr>
+        @foreach (var url in Model.Urls)
+        {
+            <tr>
+                <td><a class="nav-link text-dark" href="@url.LongUrl">@url.LongUrl</a></td>
+                <td><a class="nav-link text-dark" href="@url.ShortUrl">@url.ShortUrl</a></td>
+                <td>@url.CreationDate</td>
+                <td>@url.TransitionsNumber</td>
+                <td>
+                    <form method="post">
+                        <input name="id" value="@url.Id" hidden />
+                        <input type="submit" asp-page-handler="Delete" class="btn btn-danger" value="Delete" />
+                    </form>
+                </td>
+                <td>
+                   <a asp-page="/CreateUpdate" asp-route-updateId="@url.Id"> <input type="submit" class="btn btn-primary" value="Update" /></a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
